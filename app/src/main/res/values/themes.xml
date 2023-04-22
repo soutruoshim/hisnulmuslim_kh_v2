@@ -37,7 +37,7 @@
     </style>
 
     <style name="Theme.HisnulMuslim" parent="Base.Theme.HisnulMuslim" />
-    <style name="BottomNavigationView">
-        <item name="colorSecondaryContainer">@color/md_theme_light_secondaryContainer</item>
-    </style>
+<!--    <style name="BottomNavigationView">-->
+<!--        <item name="colorSecondaryContainer">@color/md_theme_light_secondaryContainer</item>-->
+<!--    </style>-->
 </resources>

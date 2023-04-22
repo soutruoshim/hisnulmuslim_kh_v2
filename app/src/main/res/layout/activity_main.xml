@@ -31,7 +31,5 @@
         android:layout_height="wrap_content"
         app:labelVisibilityMode="labeled"
         app:elevation="1dp"
-        app:backgroundTint="@color/md_theme_light_onSecondary"
-        android:theme="@style/BottomNavigationView"
         app:menu="@menu/bottom_navigation_menu" />
 </LinearLayout>

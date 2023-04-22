@@ -6,16 +6,21 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.google.android.play.core.review.ReviewInfo
+import com.google.android.play.core.review.ReviewManager
 import com.google.android.play.core.review.ReviewManagerFactory
+import com.google.android.play.core.tasks.Task
 import com.srhdp.hisnulmuslim.databinding.FragmentMoreBinding
 
+
 class MoreFragment : Fragment() {
+    private val reviewManager: ReviewManager? = null
     private lateinit var binding: FragmentMoreBinding
     private val titles = arrayOf<String>("អារម្មកថា","ជំនួយ និងផ្តល់មាតិ","ក្រុមអ្នកបកប្រែ","អំពីកម្មវិធី","ចែកចាយកម្មវិធី","វាយតម្លៃកម្មវិធី","កម្មវិធីផ្សេងៗទៀត")
     private val icons = arrayOf<Int>(R.drawable.info, R.drawable.help, R.drawable.people, R.drawable.copyright, R.drawable.share, R.drawable.start,R.drawable.more_verticle)
@@ -40,9 +45,16 @@ class MoreFragment : Fragment() {
                 0 -> findNavController().navigate(
                     R.id.action_moreFragment_to_introFragment,
                 )
+                1 -> findNavController().navigate(
+                    R.id.action_moreFragment_to_feedbackFragment,
+                )
                 2 -> findNavController().navigate(
                     R.id.action_moreFragment_to_translatorFragment,
                 )
+                3 -> findNavController().navigate(
+                    R.id.action_moreFragment_to_aboutFragment,
+                )
+
                 4 -> shareApp(this.requireContext())
                 5 -> inAppReview()
                 6 -> moreApp()
@@ -69,9 +81,25 @@ class MoreFragment : Fragment() {
         }
         context.startActivity(Intent.createChooser(sendIntent, null))
     }
-
+    fun showRateApp() {
+        val manager = ReviewManagerFactory.create(this.requireContext())
+        val request = manager.requestReviewFlow()
+        request.addOnCompleteListener { request ->
+            if (request.isSuccessful) {
+                // We got the ReviewInfo object
+                val reviewInfo = request.result
+                val flow = manager.launchReviewFlow(this.requireActivity(), reviewInfo)
+                flow.addOnCompleteListener { _ ->
+                }
+            } else {
+                // There was some problem, continue regardless of the result.
+                // you can show your own rate dialog alert and redirect user to your app page
+                // on play store.
+            }
+        }
+    }
     private fun inAppReview() {
-        val reviewManager = ReviewManagerFactory.create(this.requireActivity())
+        val reviewManager = ReviewManagerFactory.create(this.requireContext())
         val requestReviewFlow = reviewManager.requestReviewFlow()
         requestReviewFlow.addOnCompleteListener { request ->
             if (request.isSuccessful) {

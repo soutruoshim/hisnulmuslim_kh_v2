@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:foreground="?android:attr/selectableItemBackground"
+    android:background="?attr/colorOnSecondary"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent">
@@ -16,7 +17,7 @@
         android:layout_marginVertical="15dp"
         android:layout_marginStart="16dp"
         android:text="@string/content"
-        android:textColor="@color/md_theme_light_onBackground"
+        android:textColor="?android:attr/textColorSecondary"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@id/ivIconList"
