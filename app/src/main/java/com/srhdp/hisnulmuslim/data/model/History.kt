@@ -8,6 +8,6 @@ import androidx.room.PrimaryKey
 )
 data class History(
     @PrimaryKey
-    val id:Int? = null,
+    val id:Int,
     val dua_id: Int?= null
 )

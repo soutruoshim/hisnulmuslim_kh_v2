@@ -7,6 +7,6 @@ import androidx.room.PrimaryKey
 )
 data class Favorite(
     @PrimaryKey
-    val id:Int? = null,
+    val id:Int,
     val dua_id: Int?= null
 )

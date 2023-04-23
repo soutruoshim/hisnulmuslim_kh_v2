@@ -1,8 +1,8 @@
 package com.srhdp.hisnulmuslim.presentation.di
 
-import com.srhdp.hisnulmuslim.data.db.ContentDao
+import com.srhdp.hisnulmuslim.data.repository.DataRepositoryImpl
 import com.srhdp.hisnulmuslim.data.repository.datasource.LocalDataSource
-import com.srhdp.hisnulmuslim.data.repository.datasourceimpl.LocalDataSourceImpl
+import com.srhdp.hisnulmuslim.domain.repository.DomainRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -11,10 +11,16 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-class LocalDataModule {
+class RepositoryModule {
+
     @Singleton
     @Provides
-    fun provideLocalDataSource(contentDao: ContentDao): LocalDataSource {
-        return LocalDataSourceImpl(contentDao)
+    fun provideNewsRepository(
+        localDataSource: LocalDataSource
+    ): DomainRepository {
+        return DataRepositoryImpl(
+            localDataSource
+        )
     }
+
 }

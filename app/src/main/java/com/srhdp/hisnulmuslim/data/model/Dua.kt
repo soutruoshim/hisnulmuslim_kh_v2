@@ -8,7 +8,7 @@ import androidx.room.PrimaryKey
 )
 data class Dua(
     @PrimaryKey
-    val id:Int? = null,
+    val id:Int,
     val content_id: Int?= null,
     val dua: String?= null,
     val dua_translate: String?= null,
