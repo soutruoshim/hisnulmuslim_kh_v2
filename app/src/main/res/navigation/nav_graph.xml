@@ -9,7 +9,16 @@
         android:id="@+id/contentFragment"
         android:name="com.srhdp.hisnulmuslim.presentation.view.ContentFragment"
         android:label="Hisnul Muslim Khmer"
-        tools:layout="@layout/fragment_content" />
+        tools:layout="@layout/fragment_content" >
+        <action
+            android:id="@+id/action_contentFragment_to_detailFragment"
+            app:destination="@id/detailFragment">
+            <argument
+                android:name="myArg"
+                app:argType="integer"
+                android:defaultValue="1" />
+        </action>
+    </fragment>
     <fragment
         android:id="@+id/favoriteFragment"
         android:name="com.srhdp.hisnulmuslim.presentation.view.FavoriteFragment"
@@ -58,4 +67,9 @@
         android:name="com.srhdp.hisnulmuslim.presentation.view.AboutFragment"
         android:label="fragment_about"
         tools:layout="@layout/fragment_about" />
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.srhdp.hisnulmuslim.presentation.view.DetailFragment"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail" />
 </navigation>

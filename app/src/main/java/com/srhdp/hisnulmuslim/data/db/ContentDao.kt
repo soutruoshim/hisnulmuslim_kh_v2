@@ -11,7 +11,7 @@ interface ContentDao {
     @Query("SELECT * FROM content")
     fun getAllContent(): Flow<List<Content>>
 
-    @Query("SELECT * FROM content WHERE name LIKE :name")
-    fun searchContent(name: String): Flow<List<Content>>
+    @Query("SELECT * FROM content WHERE name LIKE '%' || :query || '%'")
+    fun searchContent(query: String): Flow<List<Content>>
 
 }

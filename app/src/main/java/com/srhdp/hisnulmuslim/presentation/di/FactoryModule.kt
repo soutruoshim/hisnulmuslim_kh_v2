@@ -2,6 +2,7 @@ package com.srhdp.hisnulmuslim.presentation.di
 
 import android.app.Application
 import com.srhdp.hisnulmuslim.domain.usecase.GetContentUseCase
+import com.srhdp.hisnulmuslim.domain.usecase.GetSearchContentUseCase
 import com.srhdp.hisnulmuslim.presentation.viewmodel.DataViewModelFactory
 import dagger.Module
 import dagger.Provides
@@ -16,11 +17,13 @@ class FactoryModule {
     @Provides
     fun provideNewsViewModelFactory(
         application: Application,
-        getContentUseCase: GetContentUseCase
+        getContentUseCase: GetContentUseCase,
+        getSearchContentUseCase: GetSearchContentUseCase
     ): DataViewModelFactory {
         return DataViewModelFactory(
             application,
-            getContentUseCase
+            getContentUseCase,
+            getSearchContentUseCase
         )
     }
 }
