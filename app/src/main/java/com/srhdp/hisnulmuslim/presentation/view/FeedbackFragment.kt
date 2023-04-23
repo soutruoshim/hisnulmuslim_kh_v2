@@ -1,4 +1,4 @@
-package com.srhdp.hisnulmuslim
+package com.srhdp.hisnulmuslim.presentation.view
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
+import com.srhdp.hisnulmuslim.R
 import com.srhdp.hisnulmuslim.databinding.FragmentFeedbackBinding
 
 

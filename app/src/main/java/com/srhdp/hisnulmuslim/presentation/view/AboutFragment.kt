@@ -1,4 +1,4 @@
-package com.srhdp.hisnulmuslim
+package com.srhdp.hisnulmuslim.presentation.view
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.srhdp.hisnulmuslim.R
 import com.srhdp.hisnulmuslim.databinding.FragmentAboutBinding
 
 class AboutFragment : Fragment() {

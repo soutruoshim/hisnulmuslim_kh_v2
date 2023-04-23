@@ -1,14 +1,13 @@
-package com.srhdp.hisnulmuslim
+package com.srhdp.hisnulmuslim.presentation.view
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
+import com.srhdp.hisnulmuslim.R
 import com.srhdp.hisnulmuslim.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

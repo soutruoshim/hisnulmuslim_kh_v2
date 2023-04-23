@@ -7,22 +7,22 @@
 
     <fragment
         android:id="@+id/contentFragment"
-        android:name="com.srhdp.hisnulmuslim.ContentFragment"
+        android:name="com.srhdp.hisnulmuslim.presentation.view.ContentFragment"
         android:label="Hisnul Muslim Khmer"
         tools:layout="@layout/fragment_content" />
     <fragment
         android:id="@+id/favoriteFragment"
-        android:name="com.srhdp.hisnulmuslim.FavoriteFragment"
+        android:name="com.srhdp.hisnulmuslim.presentation.view.FavoriteFragment"
         android:label="Favorites"
         tools:layout="@layout/fragment_favorite" />
     <fragment
         android:id="@+id/historyFragment"
-        android:name="com.srhdp.hisnulmuslim.HistoryFragment"
+        android:name="com.srhdp.hisnulmuslim.presentation.view.HistoryFragment"
         android:label="History"
         tools:layout="@layout/fragment_history" />
     <fragment
         android:id="@+id/moreFragment"
-        android:name="com.srhdp.hisnulmuslim.MoreFragment"
+        android:name="com.srhdp.hisnulmuslim.presentation.view.MoreFragment"
         android:label="More"
         tools:layout="@layout/fragment_more" >
         <action
@@ -40,22 +40,22 @@
     </fragment>
     <fragment
         android:id="@+id/introFragment"
-        android:name="com.srhdp.hisnulmuslim.IntroFragment"
+        android:name="com.srhdp.hisnulmuslim.presentation.view.IntroFragment"
         android:label="fragment_intro"
         tools:layout="@layout/fragment_intro" />
     <fragment
         android:id="@+id/translatorFragment"
-        android:name="com.srhdp.hisnulmuslim.TranslatorFragment"
+        android:name="com.srhdp.hisnulmuslim.presentation.view.TranslatorFragment"
         android:label="fragment_translator"
         tools:layout="@layout/fragment_translator" />
     <fragment
         android:id="@+id/feedbackFragment"
-        android:name="com.srhdp.hisnulmuslim.FeedbackFragment"
+        android:name="com.srhdp.hisnulmuslim.presentation.view.FeedbackFragment"
         android:label="fragment_feedback"
         tools:layout="@layout/fragment_feedback" />
     <fragment
         android:id="@+id/aboutFragment"
-        android:name="com.srhdp.hisnulmuslim.AboutFragment"
+        android:name="com.srhdp.hisnulmuslim.presentation.view.AboutFragment"
         android:label="fragment_about"
         tools:layout="@layout/fragment_about" />
 </navigation>

@@ -1,4 +1,4 @@
-package com.srhdp.hisnulmuslim
+package com.srhdp.hisnulmuslim.presentation.view
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.navigation.fragment.findNavController
+import com.srhdp.hisnulmuslim.R
 import com.srhdp.hisnulmuslim.databinding.FragmentTranslatorBinding
 
 class TranslatorFragment : Fragment() {

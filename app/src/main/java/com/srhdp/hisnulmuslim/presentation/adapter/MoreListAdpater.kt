@@ -1,10 +1,11 @@
-package com.srhdp.hisnulmuslim
+package com.srhdp.hisnulmuslim.presentation.adapter
 
 import android.app.Activity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import com.srhdp.hisnulmuslim.R
 import com.srhdp.hisnulmuslim.databinding.ListMoreItemBinding
 
 class MoreListAdpater(private val context: Activity, private val title: Array<String>, private val imgid: Array<Int>)

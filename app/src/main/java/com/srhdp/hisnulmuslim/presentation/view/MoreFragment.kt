@@ -1,4 +1,4 @@
-package com.srhdp.hisnulmuslim
+package com.srhdp.hisnulmuslim.presentation.view
 
 import android.content.ActivityNotFoundException
 import android.content.Context
@@ -12,18 +12,26 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.google.android.play.core.review.ReviewInfo
 import com.google.android.play.core.review.ReviewManager
 import com.google.android.play.core.review.ReviewManagerFactory
-import com.google.android.play.core.tasks.Task
+import com.srhdp.hisnulmuslim.R
 import com.srhdp.hisnulmuslim.databinding.FragmentMoreBinding
+import com.srhdp.hisnulmuslim.presentation.adapter.MoreListAdpater
 
 
 class MoreFragment : Fragment() {
     private val reviewManager: ReviewManager? = null
     private lateinit var binding: FragmentMoreBinding
     private val titles = arrayOf<String>("អារម្មកថា","ជំនួយ និងផ្តល់មាតិ","ក្រុមអ្នកបកប្រែ","អំពីកម្មវិធី","ចែកចាយកម្មវិធី","វាយតម្លៃកម្មវិធី","កម្មវិធីផ្សេងៗទៀត")
-    private val icons = arrayOf<Int>(R.drawable.info, R.drawable.help, R.drawable.people, R.drawable.copyright, R.drawable.share, R.drawable.start,R.drawable.more_verticle)
+    private val icons = arrayOf<Int>(
+        R.drawable.info,
+        R.drawable.help,
+        R.drawable.people,
+        R.drawable.copyright,
+        R.drawable.share,
+        R.drawable.start,
+        R.drawable.more_verticle
+    )
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
