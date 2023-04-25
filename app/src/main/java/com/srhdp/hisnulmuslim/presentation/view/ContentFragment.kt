@@ -23,6 +23,8 @@ class ContentFragment : Fragment() {
     private lateinit var viewModel: DataViewModel
     private lateinit var contentAdapter: ContentAdapter
     private lateinit var binding:FragmentContentBinding
+
+    var skipOnChange:Boolean = false;
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -46,11 +48,14 @@ class ContentFragment : Fragment() {
                 R.id.action_contentFragment_to_detailFragment,
                 bundle
             )
-
+            skipOnChange = true;
         }
 
         initRecyclerView()
-        viewAllContent()
+        //viewAllContent()
+        if(skipOnChange == false){
+            viewSearchContent("")
+        }
         setSearchView()
 
     }
@@ -65,8 +70,11 @@ class ContentFragment : Fragment() {
         }
     }
 
+
+
     //search
     //var job: Job? = null
+
     private fun setSearchView(){
         binding.etSearchView.addTextChangedListener(
             object : TextWatcher {
@@ -79,44 +87,39 @@ class ContentFragment : Fragment() {
                 }
 
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-//                    job?.cancel()
-//                    job = MainScope().launch {
-//                        delay(500L)
-//                        s?.let {
+//                    if (skipOnChange)
+//                        return;
+                    skipOnChange = true;
+
+                    MainScope().launch {
+                        delay(500)
+                         s?.let {
+                             viewSearchContent(s.toString())
+                        }
+                    }
+                    Log.d("MYTAG", "TEXT CHANGE")
+                }
+
+                override fun afterTextChanged(s: Editable?) {
+
+//                    if (skipOnChange)
+//                        return;
+//                    skipOnChange = true;
+
+                    MainScope().launch {
+                        delay(500)
+                        s?.let {
 //                            if(s.isNotEmpty()){
 //                                viewSearchContent(s.toString())
 //                            }else{
 //                                viewAllContent()
 //                            }
-//
-//                        }
-//                    }
-                    MainScope().launch {
-
-                        delay(500)
-                         s?.let {
-                            if(s.isNotEmpty()){
-                                viewSearchContent(s.toString())
-                            }else{
-                                viewAllContent()
-                            }
+                            viewSearchContent(s.toString())
                         }
                     }
+                    Log.d("MYTAG", "TEXT AFTER CHANGE")
                 }
-
-                override fun afterTextChanged(s: Editable?) {
-                    MainScope().launch {
-                        delay(500)
-                        s?.let {
-                            if(s.isNotEmpty()){
-                                viewSearchContent(s.toString())
-                            }else{
-                                viewAllContent()
-                            }
-                        }
-                    }
-                }
-            })
+        })
     }
 
     fun viewSearchContent(query:String){
