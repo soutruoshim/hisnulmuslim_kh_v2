@@ -15,7 +15,7 @@ class ContentAdapter:RecyclerView.Adapter<ContentAdapter.ContentViewHolder>() {
         val binding: ContentItemBinding
     ): RecyclerView.ViewHolder(binding.root){
         fun bind(content: Content){
-            Log.i("MYTAG","came here ${content.name}")
+            //Log.i("MYTAG","came here ${content.name}")
             binding.subContentId.text = content.id.toString()
             binding.subContentName.text = content.name
 

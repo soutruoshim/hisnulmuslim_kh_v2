@@ -4,9 +4,9 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.srhdp.hisnulmuslim.R
 import com.srhdp.hisnulmuslim.databinding.ActivityMainBinding
@@ -19,8 +19,8 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var appBarConfiguration: AppBarConfiguration
-    private lateinit var binding: ActivityMainBinding
+//    private lateinit var appBarConfiguration: AppBarConfiguration
+
     private lateinit var navHostFragment: NavHostFragment
     private lateinit var navController: NavController
 
@@ -31,6 +31,8 @@ class MainActivity : AppCompatActivity() {
     @Inject
     lateinit var contentAdapter: ContentAdapter
 
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         WindowCompat.setDecorFitsSystemWindows(window, false)
         super.onCreate(savedInstanceState)
@@ -38,7 +40,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        viewModel = ViewModelProvider(this, factory)[DataViewModel::class.java]
+
 
         //setSupportActionBar(binding.toolbar)
 
@@ -48,11 +50,13 @@ class MainActivity : AppCompatActivity() {
 
 //        appBarConfiguration = AppBarConfiguration(navController.graph)
 //        setupActionBarWithNavController(navController, appBarConfiguration)
+        //setupActionBarWithNavController(navController)
 
+        viewModel = ViewModelProvider(this, factory)[DataViewModel::class.java]
     }
 
-//    override fun onSupportNavigateUp(): Boolean {
-//        return navController.navigateUp(appBarConfiguration)
-//                || super.onSupportNavigateUp()
-//    }
+    override fun onSupportNavigateUp(): Boolean {
+        return navController.navigateUp() || super.onSupportNavigateUp()
+    }
+
 }

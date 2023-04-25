@@ -1,141 +1,191 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".presentation.view.ContentFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
+    android:background="#F3F8F9">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarAccount"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#F3F8F9"
-        android:clipToPadding="false">
-        <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/appBarDiscover"
-            android:layout_width="match_parent"
-            android:layout_height="165dp"
-            android:background="@android:color/transparent">
+        android:layout_height="95dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:titleTextColor="@color/md_theme_light_onBackground">
 
-            <com.google.android.material.appbar.CollapsingToolbarLayout
-                android:id="@+id/collapsing_Toolbar_Discover"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/more"
+            android:textColor="?attr/colorOnBackground"
+            android:textSize="28sp"
+            android:textStyle="bold" />
+    </androidx.appcompat.widget.Toolbar>
+
+<!--    <View-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="0.1dp"-->
+<!--        android:background="#612E2C2C"-->
+<!--        app:layout_constraintBottom_toTopOf="@id/layoutForUser"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent" />-->
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutForUser"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbarAccount">
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayoutSearchView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:background="@drawable/searchview_bg"
+            app:boxBackgroundMode="none"
+            app:endIconDrawable="@drawable/search"
+            app:endIconMode="custom"
+            app:endIconTint="#86AD18"
+            app:hintEnabled="false"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layoutForUser">
+            <AutoCompleteTextView
+                android:id="@+id/etSearchView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:contentScrim="@android:color/white"
-                app:layout_scrollFlags="scroll|snap|exitUntilCollapsed">
+                android:layout_marginHorizontal="15dp"
+                android:hint="@string/searchbar_hint"
+                android:singleLine="true"
+                android:inputType="text"/>
 
-                <androidx.appcompat.widget.Toolbar
-                    android:id="@+id/toolbarDiscover"
-                    android:layout_width="match_parent"
-                    android:layout_height="65dp"
-                    android:background="@android:color/transparent"
-                    app:layout_collapseMode="pin" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-                <TextView
-                    android:id="@+id/tvDiscoverWelcome"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="18dp"
-                    android:layout_marginTop="46dp"
-                    android:text="Hisnul Muslim"
-                    android:textColor="@color/md_theme_light_onBackground"
-                    android:textSize="28sp"
-                    android:textStyle="bold" />
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/textInputLayoutSearchView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="16dp"
-                    android:layout_marginTop="110dp"
-                    android:background="@drawable/searchview_bg"
-                    app:boxBackgroundMode="none"
-                    app:endIconDrawable="@drawable/search"
-                    app:endIconMode="custom"
-                    app:endIconTint="#86AD18"
-                    app:hintEnabled="false">
-
-                    <AutoCompleteTextView
-                        android:id="@+id/etSearchView"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginHorizontal="15dp"
-                        android:hint="@string/searchbar_hint"
-                        android:singleLine="true"
-                        android:inputType="text"/>
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-
-            </com.google.android.material.appbar.CollapsingToolbarLayout>
-
-
-        </com.google.android.material.appbar.AppBarLayout>
-
-        <androidx.core.widget.NestedScrollView
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvDiscoverMainItems"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+            android:layout_height="0dp"
+            android:clipToPadding="false"
+            android:orientation="vertical"
+            android:layout_marginTop="16dp"
+            android:paddingBottom="56dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textInputLayoutSearchView"
+            tools:ignore="NotSibling" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rvDiscoverMainItems"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:clipToPadding="false"
-                    android:nestedScrollingEnabled="true"
-                    android:orientation="vertical"
-                    android:paddingBottom="56dp"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    tools:ignore="MissingConstraints" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
 
-        </androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
 
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
-</LinearLayout>
-<!--<?xml version="1.0" encoding="utf-8"?>-->
-<!--<androidx.coordinatorlayout.widget.CoordinatorLayout-->
-<!--    xmlns:android="http://schemas.android.com/apk/res/android"-->
-<!--    xmlns:tools="http://schemas.android.com/tools"-->
+    <!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
 <!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    tools:context=".presentation.view.ContentFragment"-->
 <!--    android:layout_width="match_parent"-->
 <!--    android:layout_height="match_parent"-->
-<!--    tools:context=".ContentFragment">-->
-
-<!--    <androidx.core.widget.NestedScrollView-->
+<!--    >-->
+<!--    <androidx.coordinatorlayout.widget.CoordinatorLayout-->
 <!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="match_parent"-->
-<!--        app:layout_behavior="@string/searchbar_scrolling_view_behavior">-->
-<!--        &lt;!&ndash; Screen content goes here. &ndash;&gt;-->
-<!--    </androidx.core.widget.NestedScrollView>-->
-
-<!--    <com.google.android.material.appbar.AppBarLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content">-->
-<!--        <com.google.android.material.search.SearchBar-->
-<!--            android:id="@+id/search_bar"-->
+<!--        android:background="#F3F8F9"-->
+<!--        android:clipToPadding="false">-->
+<!--        <com.google.android.material.appbar.AppBarLayout-->
+<!--            android:id="@+id/appBarDiscover"-->
 <!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:hint="@string/searchbar_hint" />-->
-<!--    </com.google.android.material.appbar.AppBarLayout>-->
+<!--            android:layout_height="165dp"-->
+<!--            android:background="@android:color/transparent">-->
 
-<!--    <com.google.android.material.search.SearchView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:hint="@string/searchbar_hint"-->
-<!--        app:layout_anchor="@id/search_bar">-->
-<!--        &lt;!&ndash; Search suggestions/results go here (ScrollView, RecyclerView, etc.). &ndash;&gt;-->
-<!--        <androidx.recyclerview.widget.RecyclerView-->
-<!--            android:id="@+id/rvNews"-->
+<!--            <com.google.android.material.appbar.CollapsingToolbarLayout-->
+<!--                android:id="@+id/collapsing_Toolbar_Discover"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                app:contentScrim="@android:color/white"-->
+<!--                app:layout_scrollFlags="scroll|snap|exitUntilCollapsed">-->
+
+<!--                <androidx.appcompat.widget.Toolbar-->
+<!--                    android:id="@+id/toolbarDiscover"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="65dp"-->
+<!--                    android:background="@android:color/transparent"-->
+<!--                    app:layout_collapseMode="pin" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/tvDiscoverWelcome"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginHorizontal="18dp"-->
+<!--                    android:layout_marginTop="46dp"-->
+<!--                    android:text="Hisnul Muslim"-->
+<!--                    android:textColor="@color/md_theme_light_onBackground"-->
+<!--                    android:textSize="28sp"-->
+<!--                    android:textStyle="bold" />-->
+
+<!--                <com.google.android.material.textfield.TextInputLayout-->
+<!--                    android:id="@+id/textInputLayoutSearchView"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginHorizontal="16dp"-->
+<!--                    android:layout_marginTop="110dp"-->
+<!--                    android:background="@drawable/searchview_bg"-->
+<!--                    app:boxBackgroundMode="none"-->
+<!--                    app:endIconDrawable="@drawable/search"-->
+<!--                    app:endIconMode="custom"-->
+<!--                    app:endIconTint="#86AD18"-->
+<!--                    app:hintEnabled="false">-->
+
+<!--                    <AutoCompleteTextView-->
+<!--                        android:id="@+id/etSearchView"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:layout_marginHorizontal="15dp"-->
+<!--                        android:hint="@string/searchbar_hint"-->
+<!--                        android:singleLine="true"-->
+<!--                        android:inputType="text"/>-->
+
+<!--                </com.google.android.material.textfield.TextInputLayout>-->
+
+
+<!--            </com.google.android.material.appbar.CollapsingToolbarLayout>-->
+
+
+<!--        </com.google.android.material.appbar.AppBarLayout>-->
+
+<!--        <androidx.core.widget.NestedScrollView-->
 <!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:padding="5dp">-->
-<!--        </androidx.recyclerview.widget.RecyclerView>-->
-<!--    </com.google.android.material.search.SearchView>-->
-<!--</androidx.coordinatorlayout.widget.CoordinatorLayout>-->
+<!--            android:layout_height="match_parent"-->
+<!--            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">-->
+
+<!--            <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content">-->
+
+<!--                <androidx.recyclerview.widget.RecyclerView-->
+<!--                    android:id="@+id/rvDiscoverMainItems"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="0dp"-->
+<!--                    android:clipToPadding="false"-->
+
+<!--                    android:orientation="vertical"-->
+<!--                    android:paddingBottom="56dp"-->
+<!--                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    tools:ignore="MissingConstraints" />-->
+<!--            </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+<!--        </androidx.core.widget.NestedScrollView>-->
+
+<!--    </androidx.coordinatorlayout.widget.CoordinatorLayout>-->
+<!--</LinearLayout>-->

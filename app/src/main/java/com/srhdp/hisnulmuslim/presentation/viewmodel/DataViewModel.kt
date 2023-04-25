@@ -1,13 +1,11 @@
 package com.srhdp.hisnulmuslim.presentation.viewmodel
 
-import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import com.srhdp.hisnulmuslim.domain.usecase.GetContentUseCase
 import com.srhdp.hisnulmuslim.domain.usecase.GetSearchContentUseCase
 
 class DataViewModel(
-    private val app: Application,
     private val getContentUseCase: GetContentUseCase,
     private val getSearchContentUseCase: GetSearchContentUseCase
 ) :

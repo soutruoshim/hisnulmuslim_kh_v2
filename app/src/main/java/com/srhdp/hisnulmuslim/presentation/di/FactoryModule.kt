@@ -16,12 +16,10 @@ class FactoryModule {
     @Singleton
     @Provides
     fun provideNewsViewModelFactory(
-        application: Application,
         getContentUseCase: GetContentUseCase,
         getSearchContentUseCase: GetSearchContentUseCase
     ): DataViewModelFactory {
         return DataViewModelFactory(
-            application,
             getContentUseCase,
             getSearchContentUseCase
         )
